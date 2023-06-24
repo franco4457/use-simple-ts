@@ -1,12 +1,13 @@
 import './App.css'
+import { HomePage } from '@components/home-page'
 
 
 function App() {
 
   return (
-    <>
-    <h1>Usa fácil esta mierda</h1>
-    </>
+    <main>
+    <HomePage />
+    </main>
   )
 }
 
