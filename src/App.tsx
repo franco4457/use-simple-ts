@@ -1,12 +1,23 @@
 import './App.css'
-import { HomePage } from '@components/home-page'
+import { Welcome } from '@components/welcome'
 
+
+function Debounce (){
+return (
+  <>
+    <section>
+      <h2>Debounce</h2>
+    </section>
+  </>
+)
+}
 
 function App() {
 
   return (
     <main>
-    <HomePage />
+    <Welcome />
+   <Debounce/>
     </main>
   )
 }
