@@ -1,19 +1,17 @@
 import './App.css'
 import { Welcome } from '@components/welcome'
 
-
-function Debounce (){
-return (
+function Debounce () {
+  return (
   <>
     <section>
       <h2>Debounce</h2>
     </section>
   </>
-)
+  )
 }
 
-function App() {
-
+function App () {
   return (
     <main>
     <Welcome />

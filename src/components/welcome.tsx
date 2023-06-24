@@ -1,4 +1,4 @@
-export function Welcome() {
+export function Welcome () {
   return (
     <header>
       <h1>Bienvenido!</h1>
