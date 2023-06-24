@@ -3,7 +3,6 @@ import { Welcome } from '@components/welcome'
 import { Debounce } from '@/components/debounce'
 
 function App () {
-  console.log('App')
   return (
     <main>
       <Welcome />
