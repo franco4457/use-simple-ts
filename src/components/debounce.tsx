@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import USER_LIST from '@/mocks/users.json'
-import { useDebuonceTS } from '@/hooks/use-debounce-ts'
-
+import { useDebounceTS } from '@/hooks/use-debounce-ts'
 export function Debounce () {
   const [users, setUsers] = useState(USER_LIST)
 
@@ -11,7 +10,8 @@ export function Debounce () {
     })
     setUsers(result)
   }
-  const handleSearch = useDebuonceTS(handlerSearch, 500)
+
+  const handleSearch = useDebounceTS(handlerSearch, 500)
 
   return (
     <>

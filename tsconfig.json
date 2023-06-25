@@ -26,6 +26,9 @@
       "@components/*": ["./src/components/*"],
       "@hooks/*": ["./src/hooks/*"],
     },
+
+    /* Paths */
+    "types": ["vitest/globals"]
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
