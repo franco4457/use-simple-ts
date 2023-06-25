@@ -1,20 +1,18 @@
 import { useState } from 'react'
 import USER_LIST from '@/mocks/users.json'
+import { useDebuonceTS } from '@/hooks/use-debounce-ts'
 
 export function Debounce () {
   const [users, setUsers] = useState(USER_LIST)
-  const [inputSearch, setInputSearch] = useState<string>('')
 
-  const handlerInputSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputSearch(e.target.value)
-  }
-
-  const handleSearch = () => {
+  const handlerSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const result = USER_LIST.filter((user) => {
-      return user.name.toLowerCase().includes(inputSearch.toLowerCase())
+      return user.name.toLowerCase().includes(e.target.value.toLowerCase())
     })
     setUsers(result)
   }
+  const handleSearch = useDebuonceTS(handlerSearch, 500)
+
   return (
     <>
       <section>
@@ -26,11 +24,8 @@ export function Debounce () {
             name="search"
             type="text"
             placeholder="buscar..."
-            value={inputSearch}
-            onChange={handlerInputSearch}
+            onChange={handleSearch}
           />
-
-          <button onClick={() => handleSearch()}>Buscar</button>
         </div>
         <ul>
           {users.map((user, i) => (
