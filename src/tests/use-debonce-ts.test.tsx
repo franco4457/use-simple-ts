@@ -1,5 +1,5 @@
 import { Debounce } from '@/components/debounce'
-import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react'
+import { cleanup, fireEvent, render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 describe('useDebounceTS', () => {
@@ -34,12 +34,13 @@ describe('useDebounceTS', () => {
     // const user = userEvent.setup()
     render(<Debounce />)
     const input = screen.getByRole('textbox') as HTMLInputElement
-    fireEvent.change(input, { target: { value: 'lean' } })
+    await fireEvent.change(input, { target: { value: 'lean' } })
     const users = await screen.findAllByRole('listitem')
     expect(users).toHaveLength(10)
-    await waitFor(() => {
-      const listItems = screen.getByText(/ervin/i)
-      expect(listItems).toBeUndefined()
-    }, { timeout: 600 })
+    await Promise.resolve(() => setTimeout(() => {
+      return undefined
+    }, 1000))
+    const usersFiltered = await screen.findAllByRole('listitem')
+    expect(usersFiltered).toHaveLength(1)
   })
 })
