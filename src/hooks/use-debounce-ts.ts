@@ -11,7 +11,7 @@ export const useDebounceTS = <T extends Function>(callback: T, delay = 0) => {
     if (debouceRef.current) clearTimeout(debouceRef.current)
     debouceRef.current = setTimeout(() => {
       // eslint-disable-next-line n/no-callback-literal
-      callback(...args)
+      return callback(...args)
     }, delay)
   }
 }

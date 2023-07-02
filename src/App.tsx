@@ -1,13 +1,9 @@
 import './App.css'
-import { Welcome } from '@components/welcome'
-import { Debounce } from '@/components/debounce'
+import { Landing } from '@pages/index'
 
 function App () {
   return (
-    <main>
-      <Welcome />
-      <Debounce />
-    </main>
+    <Landing />
   )
 }
 

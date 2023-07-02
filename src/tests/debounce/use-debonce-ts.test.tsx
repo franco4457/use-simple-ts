@@ -36,7 +36,7 @@ describe('useDebounceTS', () => {
     fireEvent.change(input, { target: { value: 'foobar' } })
     const users = await screen.findAllByRole('listitem')
     expect(users).toHaveLength(10)
-    await waitFor(async() => {
+    await waitFor(async () => {
       const users = await screen.findAllByRole('listitem')
       expect(users).toHaveLength(10)
     }, { timeout: 1000 })
@@ -54,7 +54,7 @@ describe('useDebounceTS', () => {
         expect(usersFiltered).toHaveLength(1)
       },
       {
-        timeout: 1000,
+        timeout: 1000
       }
     )
   })
