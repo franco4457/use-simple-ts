@@ -1,5 +1,5 @@
 import { Debounce } from '@/components/debounce'
-import { cleanup, fireEvent, render, screen } from '@testing-library/react'
+import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 describe('useDebounceTS', () => {
@@ -30,17 +30,32 @@ describe('useDebounceTS', () => {
     await user.type(input, 'a')
     expect(input.value).toBe('a')
   })
+  it('should not filter instantly', async () => {
+    render(<Debounce />)
+    const input = screen.getByRole('textbox') as HTMLInputElement
+    fireEvent.change(input, { target: { value: 'foobar' } })
+    const users = await screen.findAllByRole('listitem')
+    expect(users).toHaveLength(10)
+    await waitFor(async() => {
+      const users = await screen.findAllByRole('listitem')
+      expect(users).toHaveLength(10)
+    }, { timeout: 1000 })
+  })
   it('should filter after debouce', async () => {
     // const user = userEvent.setup()
     render(<Debounce />)
     const input = screen.getByRole('textbox') as HTMLInputElement
-    await fireEvent.change(input, { target: { value: 'lean' } })
+    fireEvent.change(input, { target: { value: 'lean' } })
     const users = await screen.findAllByRole('listitem')
     expect(users).toHaveLength(10)
-    await Promise.resolve(() => setTimeout(() => {
-      return undefined
-    }, 1000))
-    const usersFiltered = await screen.findAllByRole('listitem')
-    expect(usersFiltered).toHaveLength(1)
+    await waitFor(
+      () => async () => {
+        const usersFiltered = await screen.findAllByRole('listitem')
+        expect(usersFiltered).toHaveLength(1)
+      },
+      {
+        timeout: 1000,
+      }
+    )
   })
 })
