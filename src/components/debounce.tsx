@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import USER_LIST from '@/mocks/users.json'
+import USER_LIST from '@utils/mocks/users.json'
 import { useDebounceTS } from '@/hooks/use-debounce-ts'
 export function Debounce () {
   const [users, setUsers] = useState(USER_LIST)
