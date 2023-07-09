@@ -1,12 +1,21 @@
 import { useState } from 'react'
 
-// type useToggleTypeTS = (initialState?:boolean | {[keyof typeof initialState]: boolean}) => [ initialState, ()=> void]
-type useToggleTypeTS = (initialState?:boolean) => [ boolean, ()=> void]
+type initialStateObject = {
+  [key: string]: boolean
+}
 
-export const useToggleTS:useToggleTypeTS = (initialState): [boolean, ()=> void] => {
+export function useToggleTS(): [false, () => void]
+export function useToggleTS(initialState: undefined): [false, () => void]
+export function useToggleTS(initialState: boolean): [boolean, () => void]
+export function useToggleTS<T extends initialStateObject>(
+  initialState: T
+): [T, (key: keyof T) => void]
+export function useToggleTS (initialState?: unknown): unknown {
   const [isOn, setIsOn] = useState(initialState ?? false)
-  const handlerToggle = () => {
-    setIsOn(!isOn)
+  const handlerToggle = (key?: keyof typeof initialState) => {
+    if (typeof initialState === 'object' && key) {
+      setIsOn({ ...isOn, [key]: !isOn[key] })
+    } else if (typeof initialState === 'boolean') setIsOn(!isOn)
   }
   return [isOn, handlerToggle]
 }
