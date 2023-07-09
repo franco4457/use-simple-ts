@@ -20,5 +20,10 @@ export const links: LinksType[] = [
     name: 'useDebounce',
     path: '/debounce',
     children: []
+  },
+  {
+    name: 'usePagination',
+    path: '/pagination',
+    children: []
   }
 ]
