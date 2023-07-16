@@ -2,9 +2,40 @@ import { usePaginationTS } from '@hooks/use-pagination-ts'
 import ALBUMS from '@utils/mocks/albums.json'
 
 export function Pagination () {
-  const { items } = usePaginationTS(ALBUMS)
+  const { items, nextPage, currentPage, maxPage, prevPage } = usePaginationTS(ALBUMS)
   return (
     <section>
+      <header
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          width: '100%',
+          height: 'fit-content'
+        }}
+        >
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-around',
+            width: '100%'
+          }}
+        >
+          <strong>Current Page: <span>{currentPage}</span></strong>
+          <strong>Total Pages: <span>{maxPage}</span></strong>
+        </div>
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'end',
+            width: '100%'
+          }}>
+          <button onClick={nextPage}>NEXT</button>
+          <button onClick={prevPage}>PREV</button>
+        </div>
+      </header>
       <table>
         <thead>
           <tr>
