@@ -4,7 +4,7 @@ export function CloudinaryUploadPage () {
   return (
     <main>
       <header>
-        <h1>UseCloudinaryUpload</h1>
+        <h1>Use Cloudinary Upload</h1>
       </header>
       <CloudinaryUpload/>
     </main>

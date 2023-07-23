@@ -24,7 +24,7 @@ describe('useDebounceTS', () => {
     expect(input).toBeDefined()
   })
   it('user should be can type', async () => {
-    const user = await userEvent.setup()
+    const user = userEvent.setup()
     render(<Debounce />)
     const input = screen.getByRole('textbox') as HTMLInputElement
     await user.type(input, 'a')
