@@ -25,5 +25,10 @@ export const links: LinksType[] = [
     name: 'usePagination',
     path: '/pagination',
     children: []
+  },
+  {
+    name: 'useCloudinaryUpload',
+    path: '/coudinary-upload',
+    children: []
   }
 ]

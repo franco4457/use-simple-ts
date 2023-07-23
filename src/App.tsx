@@ -1,9 +1,10 @@
 import './App.css'
-import { Landing } from '@pages/index'
-import { TogglePage } from '@pages/toggle'
-import { Route } from 'wouter'
 import { DebouncePage } from '@pages/debunce'
+import { Landing } from '@pages/index'
 import { PaginationPage } from '@pages/pagination'
+import { Route } from 'wouter'
+import { TogglePage } from '@pages/toggle'
+import { CloudinaryUploadPage } from '@pages/cloudinary-upload'
 
 function App () {
   return (
@@ -12,6 +13,7 @@ function App () {
       <Route path="/toggle" component={TogglePage} />
       <Route path="/debounce" component={DebouncePage} />
       <Route path="/pagination" component={PaginationPage} />
+      <Route path="/coudinary-upload" component={CloudinaryUploadPage} />
     </>
   )
 }
