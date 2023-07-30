@@ -11,7 +11,7 @@ export function CloudinaryUpload () {
         placeholder="Upload an image"
         onChange={handleInputChange}
       />
-      {image && <img src={image} alt="uploaded image" />}
+    {image && <img data-testid='image' src={image} alt="uploaded image" />}
     </section>
   )
 }

@@ -1,9 +1,10 @@
 import { CloudinaryUpload } from '@/components/cloudinary-upload'
 import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
 import testImg from '@utils/mocks/assets/test-img.png'
+import wrongFile from '@utils/mocks/assets/wrong-file.txt'
 
 const fakeFile = new File([testImg], 'test.png', { type: 'image/png' })
+const fakeWrognFile = new File([wrongFile], 'test.png', { type: 'image/png' })
 
 describe('UseCloudinaryUploadTS', () => {
   afterEach(cleanup)
@@ -21,13 +22,21 @@ describe('UseCloudinaryUploadTS', () => {
     const $img = screen.queryByRole('image')
     expect($img).toBeNull()
   })
-  test.skip('should be render a image when upload a image', async () => {
+  test('should be render a image when upload a image', async () => {
     render(<CloudinaryUpload/>)
     const $input = screen.getByPlaceholderText(/upload/i) as HTMLInputElement
-    userEvent.upload($input, fakeFile)
-    fireEvent.change($input)
+    fireEvent.change($input, { target: { files: [fakeFile] } })
     await waitFor(async () => {
-      const $img = screen.getByRole('image')
+      const $img = screen.getByTestId('image')
+      expect($img).toBeDefined()
+    }, { timeout: 2000 })
+  })
+  test.skip('should be render a alert when upload a wrong file', async () => {
+    render(<CloudinaryUpload/>)
+    const $input = screen.getByPlaceholderText(/upload/i) as HTMLInputElement
+    fireEvent.change($input, { target: { files: [fakeWrognFile] } })
+    await waitFor(async () => {
+      const $img = screen.getByText(/^(?=.*error)(?=.*imagen).*$/i)
       expect($img).toBeDefined()
     }, { timeout: 2000 })
   })
