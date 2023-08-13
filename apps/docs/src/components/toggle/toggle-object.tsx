@@ -3,7 +3,7 @@ import { TOGGLE_BUTTON_TEXT } from '@utils/const'
 
 const { ON, OFF } = TOGGLE_BUTTON_TEXT
 
-export function ToggleObject ({
+export function ToggleObject({
   initialState
 }: {
   initialState: { [key: string]: boolean }
