@@ -3,11 +3,10 @@
   "private": true,
   "version": "0.0.1",
   "scripts": {
-    "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint src --ext ts,tsx,js,jsx,mjs,cjs",
-    "preview": "vite preview",
-    "test": "turbo test",
+    "test": "vitest --config ./vitest.config.js",
+    "clean:node-modules": "rimraf ./apps/**/node_modules && rimraf ./packages/**/**/node_modules && rm -rf ./node_modules",
     "create:hook": "plop hook",
     "prepare": "husky install"
   },
@@ -18,6 +17,7 @@
   "devDependencies": {
     "@commitlint/cli": "^17.7.1",
     "@commitlint/config-conventional": "^17.7.0",
+    "@happy-dom/jest-environment": "^10.10.4",
     "@testing-library/react": "14.0.0",
     "@testing-library/react-hooks": "^8.0.1",
     "@testing-library/user-event": "14.4.3",
