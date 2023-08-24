@@ -1,12 +1,13 @@
 import { useState } from 'react'
 import { fetchCloudinaryApi } from './utils'
-// export interface UseCloudinaryUploadTsProps {}
+export type UseCloudinaryUploadTsProps = RequiredCloudnaryProps
 
 export function useCloudinaryUploadTS({
   uploadPresetName,
   cloudName
-}: UseCloudinaryUploadProps) {
+}: UseCloudinaryUploadTsProps) {
   const [image, setImage] = useState<string>()
+  const [error, setError] = useState<string>()
   const handleInputChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const { target } = e
     if (target.files && target.files.length) {
@@ -25,10 +26,13 @@ export function useCloudinaryUploadTS({
             base64data
           })
           setImage(response.secure_url)
-          console.log(response)
         }
       } catch (error) {
-        console.log(error)
+        if (error instanceof Error) {
+          setError(error.message)
+        } else {
+          setError('Oops... There was an error uploading the file')
+        }
       } finally {
         console.log('finally')
       }
@@ -36,6 +40,7 @@ export function useCloudinaryUploadTS({
   }
   return {
     handleInputChange,
+    error,
     image
   }
 }

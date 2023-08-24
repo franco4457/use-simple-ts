@@ -28,8 +28,6 @@ interface RequiredCloudnaryProps {
   cloudName: string
 }
 
-type UseCloudinaryUploadProps = RequiredCloudnaryProps
-
 interface FetchCloudinaryApiProps extends RequiredCloudnaryProps {
   base64data: FileReader['result']
 }
