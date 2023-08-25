@@ -8,6 +8,7 @@ export function useCloudinaryUploadTS({
 }: UseCloudinaryUploadTsProps) {
   const [image, setImage] = useState<string>()
   const [error, setError] = useState<string>()
+  const [isLoading, setIsLoading] = useState(false)
   const handleInputChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const { target } = e
     if (target.files && target.files.length) {
@@ -18,6 +19,7 @@ export function useCloudinaryUploadTS({
       reader.readAsDataURL(file)
 
       try {
+        setIsLoading(true)
         reader.onloadend = async () => {
           const base64data = reader.result
           const response = await fetchCloudinaryApi({
@@ -34,13 +36,14 @@ export function useCloudinaryUploadTS({
           setError('Oops... There was an error uploading the file')
         }
       } finally {
-        console.log('finally')
+        setIsLoading(false)
       }
     }
   }
   return {
     handleInputChange,
     error,
+    isLoading,
     image
   }
 }
