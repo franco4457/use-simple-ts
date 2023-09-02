@@ -4,20 +4,27 @@ export type UseToggleTSProps = {
   [key: string]: boolean
 }
 
-export function useToggleTS(): [false, () => void]
-export function useToggleTS(initialState: undefined): [false, () => void]
-export function useToggleTS(initialState: boolean): [boolean, () => void]
+export function useToggleTS(): { toggle: false; handlerToggle: (value?: boolean) => void }
+export function useToggleTS(initialState: undefined): {
+  toggle: false
+  handlerToggle: (value?: boolean) => void
+}
+export function useToggleTS(initialState: boolean): {
+  toggle: boolean
+  handlerToggle: (value?: boolean) => void
+}
 export function useToggleTS<T extends UseToggleTSProps>(
   initialState: T
-): [T, (key: keyof T) => void]
+): { toggle: T; handlerToggle: (key: keyof T) => void }
 export function useToggleTS(initialState?: unknown): unknown {
-  const [isOn, setIsOn] = useState(initialState ?? false)
+  const [toggle, setToggle] = useState(initialState ?? false)
   const handlerToggle = (key?: keyof typeof initialState) => {
-    if (typeof initialState === 'object' && key) {
-      setIsOn({ ...isOn, [key]: !isOn[key] })
-    } else if (typeof initialState === 'boolean') setIsOn(!isOn)
+    if (typeof toggle === 'object' && typeof initialState === 'object' && key) {
+      setToggle({ ...toggle, [key]: !toggle[key] })
+    } else if (typeof initialState === 'boolean' && typeof key === 'boolean') setToggle(key)
+    else if (typeof toggle === 'boolean') setToggle(!toggle)
   }
-  return [isOn, handlerToggle]
+  return { toggle, handlerToggle }
 }
 
 export type UseToggleTSReturn = ReturnType<typeof useToggleTS>

@@ -11,12 +11,14 @@
     "test": "vitest"
   },
   "dependencies": {
+    "@use-simple-ts/use-cloudinary-upload-ts": "workspace:*",
+    "@use-simple-ts/use-debounce-ts": "workspace:*",
+    "@use-simple-ts/use-pagination-ts": "workspace:*",
     "@use-simple-ts/use-toggle-ts": "workspace:*",
+    "dotenv": "^16.3.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "vite": "4.3.9",
-    "dotenv": "^16.3.1",
     "wouter": "2.11.0"
-  },
-  "devDependencies": {}
+  }
 }

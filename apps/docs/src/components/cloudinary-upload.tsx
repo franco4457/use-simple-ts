@@ -1,8 +1,11 @@
-import { useCloudinaryUploadTS } from '@/hooks/use-cloudinary-upload-ts'
+import { useCloudinaryUploadTS } from '@use-simple-ts/use-cloudinary-upload-ts'
 import { cloudinaryCloudName, cloudinaryUploadPreset } from '@/lib/env'
 
-export function CloudinaryUpload () {
-  const { handleInputChange, image } = useCloudinaryUploadTS({ cloudName: cloudinaryCloudName, uploadPresetName: cloudinaryUploadPreset })
+export function CloudinaryUpload() {
+  const { handleInputChange, image } = useCloudinaryUploadTS({
+    cloudName: cloudinaryCloudName,
+    uploadPresetName: cloudinaryUploadPreset
+  })
   return (
     <section>
       <input
@@ -11,7 +14,7 @@ export function CloudinaryUpload () {
         placeholder="Upload an image"
         onChange={handleInputChange}
       />
-    {image && <img data-testid='image' src={image} alt="uploaded image" />}
+      {image && <img data-testid="image" src={image} alt="uploaded image" />}
     </section>
   )
 }

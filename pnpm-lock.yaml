@@ -108,6 +108,15 @@ importers:
 
   apps/docs:
     dependencies:
+      '@use-simple-ts/use-cloudinary-upload-ts':
+        specifier: workspace:*
+        version: link:../../packages/hooks/use-cloudinary-upload-ts
+      '@use-simple-ts/use-debounce-ts':
+        specifier: workspace:*
+        version: link:../../packages/hooks/use-debounce-ts
+      '@use-simple-ts/use-pagination-ts':
+        specifier: workspace:*
+        version: link:../../packages/hooks/use-pagination-ts
       '@use-simple-ts/use-toggle-ts':
         specifier: workspace:*
         version: link:../../packages/hooks/use-toggle-ts
@@ -122,7 +131,7 @@ importers:
         version: 18.2.0(react@18.2.0)
       vite:
         specifier: 4.3.9
-        version: 4.3.9(@types/node@20.4.7)
+        version: 4.3.9
       wouter:
         specifier: 2.11.0
         version: 2.11.0(react@18.2.0)
@@ -1196,6 +1205,7 @@ packages:
 
   /@types/node@20.4.7:
     resolution: {integrity: sha512-bUBrPjEry2QUTsnuEjzjbS7voGWCc30W0qzgMf90GPeDGFRakvrz47ju+oqDAKCXLUCe39u57/ORMl/O/04/9g==}
+    dev: true
 
   /@types/normalize-package-data@2.4.1:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
@@ -5458,6 +5468,38 @@ packages:
       - terser
     dev: true
 
+  /vite@4.3.9:
+    resolution: {integrity: sha512-qsTNZjO9NoJNW7KnOrgYwczm0WctJ8m/yqYAMAK9Lxt4SoySUfS5S8ia9K7JHpa3KEeMfyF8LoJ3c5NeBJy6pg==}
+    engines: {node: ^14.18.0 || >=16.0.0}
+    hasBin: true
+    peerDependencies:
+      '@types/node': '>= 14'
+      less: '*'
+      sass: '*'
+      stylus: '*'
+      sugarss: '*'
+      terser: ^5.4.0
+    peerDependenciesMeta:
+      '@types/node':
+        optional: true
+      less:
+        optional: true
+      sass:
+        optional: true
+      stylus:
+        optional: true
+      sugarss:
+        optional: true
+      terser:
+        optional: true
+    dependencies:
+      esbuild: 0.17.19
+      postcss: 8.4.24
+      rollup: 3.26.0
+    optionalDependencies:
+      fsevents: 2.3.2
+    dev: false
+
   /vite@4.3.9(@types/node@20.4.7):
     resolution: {integrity: sha512-qsTNZjO9NoJNW7KnOrgYwczm0WctJ8m/yqYAMAK9Lxt4SoySUfS5S8ia9K7JHpa3KEeMfyF8LoJ3c5NeBJy6pg==}
     engines: {node: ^14.18.0 || >=16.0.0}
@@ -5489,6 +5531,7 @@ packages:
       rollup: 3.26.0
     optionalDependencies:
       fsevents: 2.3.2
+    dev: true
 
   /vitest@0.34.1(happy-dom@9.20.3):
     resolution: {integrity: sha512-G1PzuBEq9A75XSU88yO5G4vPT20UovbC/2osB2KEuV/FisSIIsw7m5y2xMdB7RsAGHAfg2lPmp2qKr3KWliVlQ==}

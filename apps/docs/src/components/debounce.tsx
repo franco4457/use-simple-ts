@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import USER_LIST from '@utils/mocks/users.json'
-import { useDebounceTS } from '@/hooks/use-debounce-ts'
-export function Debounce () {
+import { useDebounceTS } from '@use-simple-ts/use-debounce-ts'
+export function Debounce() {
   const [users, setUsers] = useState(USER_LIST)
 
   const handlerSearch = (e: React.ChangeEvent<HTMLInputElement>) => {

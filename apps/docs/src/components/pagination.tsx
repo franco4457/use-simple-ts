@@ -1,8 +1,9 @@
-import { usePaginationTS } from '@hooks/use-pagination-ts'
+import { usePaginationTS } from '@use-simple-ts/use-pagination-ts'
 import ALBUMS from '@utils/mocks/albums.json'
 
-export function Pagination () {
-  const { items, nextPage, currentPage, maxPage, prevPage } = usePaginationTS(ALBUMS)
+export function Pagination() {
+  const { items, nextPage, currentPage, maxPage, prevPage } =
+    usePaginationTS(ALBUMS)
   return (
     <section>
       <header
@@ -13,7 +14,7 @@ export function Pagination () {
           width: '100%',
           height: 'fit-content'
         }}
-        >
+      >
         <div
           style={{
             display: 'flex',
@@ -22,8 +23,12 @@ export function Pagination () {
             width: '100%'
           }}
         >
-          <strong>Current Page: <span>{currentPage}</span></strong>
-          <strong>Total Pages: <span>{maxPage}</span></strong>
+          <strong>
+            Current Page: <span>{currentPage}</span>
+          </strong>
+          <strong>
+            Total Pages: <span>{maxPage}</span>
+          </strong>
         </div>
         <div
           style={{
@@ -31,7 +36,8 @@ export function Pagination () {
             alignItems: 'center',
             justifyContent: 'end',
             width: '100%'
-          }}>
+          }}
+        >
           <button onClick={nextPage}>NEXT</button>
           <button onClick={prevPage}>PREV</button>
         </div>
