@@ -2,8 +2,7 @@ import { usePaginationTS } from '@use-simple-ts/use-pagination-ts'
 import ALBUMS from '@utils/mocks/albums.json'
 
 export function Pagination() {
-  const { items, nextPage, currentPage, maxPage, prevPage } =
-    usePaginationTS(ALBUMS)
+  const { items, nextPage, currentPage, maxPage, prevPage } = usePaginationTS({ items: ALBUMS })
   return (
     <section>
       <header
