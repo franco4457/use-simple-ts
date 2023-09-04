@@ -16,7 +16,5 @@ jobs:
       - uses: pnpm/action-setup@v2
         with:
           version: 8
-      - name: Install dependencies
-        run: npm i
       - name: Run tests
-        run: npm run test
+        run: pnpm test
