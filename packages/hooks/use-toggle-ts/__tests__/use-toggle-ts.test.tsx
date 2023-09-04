@@ -1,7 +1,6 @@
-import { renderHook } from '@testing-library/react'
+import { renderHook, act } from '@testing-library/react'
 
 import { useToggleTS } from '../src'
-import { act } from 'react-dom/test-utils'
 
 describe('useToggleTS', () => {
   it('should work correctly when initialState is undefined', () => {

@@ -1,7 +1,6 @@
-import { renderHook } from '@testing-library/react'
+import { renderHook, act } from '@testing-library/react'
 import ALBUMS from './mock.json'
 import { usePaginationTS } from '../src'
-import { act } from 'react-dom/test-utils'
 
 describe('usePaginationTS', () => {
   it('should work correctly', () => {
