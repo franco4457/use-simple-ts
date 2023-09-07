@@ -17,7 +17,6 @@ export const fetchCloudinaryApi = async ({
   if (res.ok) {
     return res.json() as Promise<CloudinaryResponse>
   } else {
-    console.log(res)
     res.json().then((res) => console.log(res))
     throw new Error('Error to upload image')
   }

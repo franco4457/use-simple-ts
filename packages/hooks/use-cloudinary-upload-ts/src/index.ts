@@ -2,10 +2,7 @@ import { useState } from 'react'
 import { fetchCloudinaryApi } from './utils'
 export type UseCloudinaryUploadTsProps = RequiredCloudnaryProps
 
-export function useCloudinaryUploadTS({
-  uploadPresetName,
-  cloudName
-}: UseCloudinaryUploadTsProps) {
+export function useCloudinaryUploadTS({ uploadPresetName, cloudName }: UseCloudinaryUploadTsProps) {
   const [image, setImage] = useState<string>()
   const [error, setError] = useState<string>()
   const [isLoading, setIsLoading] = useState(false)
@@ -18,8 +15,8 @@ export function useCloudinaryUploadTS({
       const reader = new FileReader()
       reader.readAsDataURL(file)
 
+      setIsLoading(true)
       try {
-        setIsLoading(true)
         reader.onloadend = async () => {
           const base64data = reader.result
           const response = await fetchCloudinaryApi({
@@ -48,6 +45,4 @@ export function useCloudinaryUploadTS({
   }
 }
 
-export type UseCloudinaryUploadTsReturn = ReturnType<
-  typeof useCloudinaryUploadTS
->
+export type UseCloudinaryUploadTsReturn = ReturnType<typeof useCloudinaryUploadTS>

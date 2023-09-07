@@ -20,8 +20,6 @@ interface CloudinaryResponse {
   access_mode: string
   original_filename: string
 }
-// const { VITE_CLOUDINARY_UPLOAD_PRESET, VITE_CLOUDINARY_CLOUD_NAME } = import.meta.env
-// const cloudinaryUrl = 'https://api.cloudinary.com/v1_1/CLOUD_NAME/upload'
 
 interface RequiredCloudnaryProps {
   uploadPresetName: string
@@ -30,4 +28,12 @@ interface RequiredCloudnaryProps {
 
 interface FetchCloudinaryApiProps extends RequiredCloudnaryProps {
   base64data: FileReader['result']
+}
+declare module '*.png' {
+  const value: never
+  export default value
+}
+declare module '*.txt' {
+  const value: never
+  export default value
 }
