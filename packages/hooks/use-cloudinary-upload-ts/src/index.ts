@@ -15,25 +15,25 @@ export function useCloudinaryUploadTS({ uploadPresetName, cloudName }: UseCloudi
       const reader = new FileReader()
       reader.readAsDataURL(file)
 
-      setIsLoading(true)
-      try {
-        reader.onloadend = async () => {
-          const base64data = reader.result
-          const response = await fetchCloudinaryApi({
-            uploadPresetName,
-            cloudName,
-            base64data
+      reader.onloadend = async () => {
+        setIsLoading(true)
+        const base64data = reader.result
+        await fetchCloudinaryApi({
+          uploadPresetName,
+          cloudName,
+          base64data
+        })
+          .then((res) => setImage(res.secure_url))
+          .catch((error: Error) => {
+            if (error instanceof Error) {
+              setError(error.message)
+            } else {
+              setError('Oops... There was an error uploading the file')
+            }
           })
-          setImage(response.secure_url)
-        }
-      } catch (error) {
-        if (error instanceof Error) {
-          setError(error.message)
-        } else {
-          setError('Oops... There was an error uploading the file')
-        }
-      } finally {
-        setIsLoading(false)
+          .finally(() => {
+            setIsLoading(false)
+          })
       }
     }
   }

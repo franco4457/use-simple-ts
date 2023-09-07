@@ -40,9 +40,9 @@ describe('useCloudinaryUploadTS', () => {
       { timeout: 2000 }
     )
   })
-  it.skip('should work correctly with file and error', async () => {
+  it('should be change state loading', async () => {
     const { result } = renderHook(() => useCloudinaryUploadTS({ uploadPresetName, cloudName }))
-    const file = new File([testImage], 'wrong.txt', { type: 'image/png' })
+    const file = new File([testImage], 'test.png', { type: 'image/png' })
     const event = {
       target: {
         files: [file]
@@ -56,5 +56,24 @@ describe('useCloudinaryUploadTS', () => {
       expect(result.current).not.toBe(initalResult)
     })
     expect(result.current.isLoading).toBe(true)
+  })
+  it('should be change state error', async () => {
+    const { result } = renderHook(() => useCloudinaryUploadTS({ uploadPresetName: '', cloudName }))
+    const file = new File([testImage], 'test.png', { type: 'image/png' })
+    const event = {
+      target: {
+        files: [file]
+      }
+    } as unknown as React.ChangeEvent<HTMLInputElement>
+    act(() => {
+      result.current.handleInputChange(event)
+    })
+    await waitFor(
+      () => {
+        expect(result.current.error).toBeDefined()
+        expect(result.current.error).toBe('Error to upload image')
+      },
+      { timeout: 2000 }
+    )
   })
 })
