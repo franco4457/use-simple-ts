@@ -1,6 +1,5 @@
 import { act, renderHook, waitFor } from '@testing-library/react'
 import testImage from './test-img.png'
-// import wrongFile from './wrong-file.txt'
 import { useCloudinaryUploadTS } from '../src'
 
 const {
@@ -75,5 +74,36 @@ describe('useCloudinaryUploadTS', () => {
       },
       { timeout: 2000 }
     )
+  })
+  it('should be update multiple images', async () => {
+    const { result } = renderHook(() => useCloudinaryUploadTS({ uploadPresetName, cloudName }))
+    const file = new File([testImage], 'test.png', { type: 'image/png' })
+    const event = {
+      target: {
+        files: [file]
+      }
+    } as unknown as React.ChangeEvent<HTMLInputElement>
+    act(() => {
+      result.current.handleInputChange(event)
+    })
+    await waitFor(
+      () => {
+        expect(result.current.image).toBeDefined()
+        expect(result.current.image).toBeTypeOf('string')
+        expect(result.current.images).toHaveLength(1)
+        expect(result.current.images[0]).toBe(result.current.image)
+      },
+      { timeout: 2000 }
+    )
+    const previousImage = result.current.image
+    act(() => {
+      result.current.handleInputChange(event)
+    })
+    await waitFor(() => {
+      expect(result.current.images).toHaveLength(2)
+      expect(result.current.images[1]).toBe(result.current.image)
+      expect(result.current.image).not.toBe(previousImage)
+      expect(result.current.images[0]).toBe(previousImage)
+    })
   })
 })

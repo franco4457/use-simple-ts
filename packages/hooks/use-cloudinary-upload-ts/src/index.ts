@@ -4,6 +4,7 @@ export type UseCloudinaryUploadTsProps = RequiredCloudnaryProps
 
 export function useCloudinaryUploadTS({ uploadPresetName, cloudName }: UseCloudinaryUploadTsProps) {
   const [image, setImage] = useState<string>()
+  const [images, setImages] = useState<string[]>([])
   const [error, setError] = useState<string>()
   const [isLoading, setIsLoading] = useState(false)
   const handleInputChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -23,7 +24,11 @@ export function useCloudinaryUploadTS({ uploadPresetName, cloudName }: UseCloudi
           cloudName,
           base64data
         })
-          .then((res) => setImage(res.secure_url))
+          .then((res) => {
+            setImages((prev) => [...prev, res.secure_url])
+            setImage(res.secure_url)
+          })
+
           .catch((error: Error) => {
             if (error instanceof Error) {
               setError(error.message)
@@ -41,7 +46,8 @@ export function useCloudinaryUploadTS({ uploadPresetName, cloudName }: UseCloudi
     handleInputChange,
     error,
     isLoading,
-    image
+    image,
+    images
   }
 }
 
