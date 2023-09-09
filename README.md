@@ -1,16 +1,21 @@
-@use-simple-ts
-A Quick description of the component
+# @use-simple-ts
 
-This is an internal utility, not intended for public usage.
+A lightweight library for custom react hooks
 
 Installation
-yarn add @use-simple-ts
 
-# or
+### Using pnpm
 
-npm i @use-simple-ts
-Contribution
-Yes please! See the contributing guidelines for details.
+```bash
+pnpm add @use-simple-ts/core
+```
 
-Licence
-This project is licensed under the terms of the MIT license.
+### or using npm
+
+```bash
+npm i @use-simple-ts/core
+```
+
+Contribution Yes please! See the contributing guidelines for details.
+
+Licence This project is licensed under the terms of the MIT license.

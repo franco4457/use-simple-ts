@@ -3,11 +3,13 @@
   "private": true,
   "version": "0.0.1",
   "scripts": {
-    "build": "tsc && vite build",
+    "build": "turbo build --filter=!use-simple-ts-web",
     "lint": "eslint src --ext ts,tsx,js,jsx,mjs,cjs",
     "test": "vitest --config ./vitest.config.js",
     "clean:node-modules": "rimraf ./apps/**/node_modules && rimraf ./packages/**/**/node_modules && rm -rf ./node_modules",
     "create:hook": "plop hook",
+    "version": "changeset version",
+    "release": "changeset publish",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -15,6 +17,8 @@
     "react-dom": "18.2.0"
   },
   "devDependencies": {
+    "@changesets/changelog-github": "^0.4.8",
+    "@changesets/cli": "^2.26.2",
     "@commitlint/cli": "^17.7.1",
     "@commitlint/config-conventional": "^17.7.0",
     "@happy-dom/jest-environment": "^10.10.4",
