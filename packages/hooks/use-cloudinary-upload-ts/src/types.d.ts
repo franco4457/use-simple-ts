@@ -29,11 +29,3 @@ interface RequiredCloudnaryProps {
 interface FetchCloudinaryApiProps extends RequiredCloudnaryProps {
   base64data: FileReader['result']
 }
-declare module '*.png' {
-  const value: never
-  export default value
-}
-declare module '*.txt' {
-  const value: never
-  export default value
-}
