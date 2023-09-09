@@ -95,12 +95,12 @@ describe('useDebounceTs', () => {
       result.current()
     })
     expect(count).toBe(0)
-    await waitFor(
-      () => {
+    await new Promise((resolve) => {
+      setTimeout(() => {
         expect(count).toBe(1)
-      },
-      { timeout: 1000 }
-    )
+        resolve(0)
+      }, 200)
+    })
     act(() => {
       result.current()
       result.current()
@@ -108,12 +108,12 @@ describe('useDebounceTs', () => {
       result.current()
     })
     expect(count).toBe(1)
-    await waitFor(
-      () => {
+    await new Promise((resolve) => {
+      setTimeout(() => {
         expect(count).toBe(2)
-      },
-      { timeout: 1000 }
-    )
+        resolve(0)
+      }, 200)
+    })
   })
   it.concurrent('should be cancel debounce when call cancel', async () => {
     let count = 0
@@ -132,7 +132,7 @@ describe('useDebounceTs', () => {
       setTimeout(() => {
         expect(count).toBe(0)
         resolve(0)
-      }, 1000)
+      }, 300)
     })
   })
   it.concurrent('should be cancel debounce when call cancel 2', async () => {
@@ -152,7 +152,7 @@ describe('useDebounceTs', () => {
       setTimeout(() => {
         expect(count).toBe(0)
         resolve(0)
-      }, 1000)
+      }, 300)
     })
     act(() => {
       result.current()
@@ -165,7 +165,7 @@ describe('useDebounceTs', () => {
       setTimeout(() => {
         expect(count).toBe(1)
         resolve(0)
-      }, 1000)
+      }, 300)
     })
   })
   it.concurrent('should be flush debounce when call flush', async () => {
@@ -185,7 +185,7 @@ describe('useDebounceTs', () => {
       setTimeout(() => {
         expect(count).toBe(1)
         resolve(0)
-      }, 1000)
+      }, 300)
     })
   })
   it.concurrent('should be flush debounce when call multiples flush', async () => {
@@ -205,7 +205,7 @@ describe('useDebounceTs', () => {
       setTimeout(() => {
         expect(count).toBe(1)
         resolve(0)
-      }, 1000)
+      }, 300)
     })
     act(() => {
       result.current()
@@ -218,7 +218,7 @@ describe('useDebounceTs', () => {
       setTimeout(() => {
         expect(count).toBe(2)
         resolve(0)
-      }, 1000)
+      }, 300)
     })
     act(() => {
       result.current()
@@ -231,7 +231,70 @@ describe('useDebounceTs', () => {
       setTimeout(() => {
         expect(count).toBe(5)
         resolve(0)
-      }, 1000)
+      }, 300)
+    })
+  })
+
+  it.concurrent("should be delay 500 when delay isn't send", async () => {
+    let count = 0
+    const fn = () => {
+      count++
+    }
+    const { result } = renderHook(() => useDebounceTS(fn))
+    act(() => {
+      result.current()
+      result.current()
+      result.current()
+    })
+    expect(count).toBe(0)
+    await new Promise((resolve) => {
+      setTimeout(() => {
+        expect(count).toBe(0)
+        resolve(0)
+      }, 300)
+    })
+    await new Promise((resolve) => {
+      setTimeout(() => {
+        expect(count).toBe(1)
+        resolve(0)
+      }, 300)
+    })
+  })
+  it.concurrent('should be restart counter when is called again', async () => {
+    let count = 0
+    const fn = () => {
+      count++
+    }
+    const { result } = renderHook(() => useDebounceTS(fn, 200))
+    act(() => {
+      result.current()
+      result.current()
+      result.current()
+    })
+    expect(count).toBe(0)
+    await new Promise((resolve) => {
+      setTimeout(() => {
+        expect(count).toBe(0)
+        resolve(0)
+      }, 100)
+    })
+    act(() => {
+      result.current()
+      result.current()
+      result.current()
+    })
+    expect(count).toBe(0)
+    await new Promise((resolve) => {
+      setTimeout(() => {
+        expect(count).toBe(0)
+        resolve(0)
+      }, 100)
+    })
+    await new Promise((resolve) => {
+      setTimeout(() => {
+        expect(count).toBe(1)
+        resolve(0)
+      }, 100)
     })
   })
 })
