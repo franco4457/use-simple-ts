@@ -1,12 +1,15 @@
 {
-  "name": "@use-simple-ts/use-cloudinary-upload-ts",
+  "name": "@use-simple-ts/core",
   "version": "1.0.0",
-  "description": "hook for upload files on cloudinary",
-  "keywords": [
-    "use-cloudinary-upload-ts"
-  ],
+  "description": "A lightweight library for custom react hooks 🚀",
   "author": "Franco Gutierrez <francoegi01@gmail.com>",
   "license": "MIT",
+  "keywords": [
+    "react",
+    "hooks",
+    "custom hooks",
+    "lightweight"
+  ],
   "main": "src/index.ts",
   "sideEffects": false,
   "files": [
@@ -18,34 +21,32 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/franco4457/use-simple-ts.git",
-    "directory": "packages/hooks/use-cloudinary-upload-ts"
+    "directory": "packages/core/react"
   },
   "bugs": {
     "url": "https://github.com/franco4457/use-simple-ts/issues"
   },
   "scripts": {
-    "build": "tsup src --dts",
-    "build:fast": "tsup src",
+    "build": "tsup src",
     "dev": "pnpm build:fast -- --watch",
     "clean": "rimraf dist .turbo",
     "typecheck": "tsc --noEmit",
+    "build:fast": "tsup",
     "prepack": "clean-package",
     "postpack": "clean-package restore"
+  },
+  "dependencies": {
+    "@use-simple-ts/use-cloudinary-upload-ts": "workspace:*",
+    "@use-simple-ts/use-debounce-ts": "workspace:*",
+    "@use-simple-ts/use-pagination-ts": "workspace:*",
+    "@use-simple-ts/use-toggle-ts": "workspace:*"
   },
   "peerDependencies": {
     "react": ">=18"
   },
   "devDependencies": {
-    "clean-package": "2.2.0",
-    "react": "^18.0.0"
+    "react": "^18.0.0",
+    "clean-package": "2.2.0"
   },
-  "clean-package": "../../../clean-package.config.json",
-  "tsup": {
-    "clean": true,
-    "target": "es2019",
-    "format": [
-      "cjs",
-      "esm"
-    ]
-  }
+  "clean-package": "../../../clean-package.config.json"
 }
