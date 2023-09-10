@@ -18,7 +18,7 @@ Yes please! See the
 [contributing guidelines](https://github.com/franco4457/use-simple-ts/blob/master/CONTRIBUTING.md)
 for details.
 
-## Licence
+## License
 
 This project is licensed under the terms of the
 [MIT license](https://github.com/franco4457/use-simple-ts/blob/master/LICENSE).
