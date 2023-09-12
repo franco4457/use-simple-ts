@@ -18,4 +18,4 @@ npm i @use-simple-ts/core
 
 Contribution Yes please! See the contributing guidelines for details.
 
-License This project is licensed under the terms of the MIT license.
+License This project is licensed under the terms of the [MIT license](https://github.com/franco4457/use-simple-ts/blob/master/LICENSE).
