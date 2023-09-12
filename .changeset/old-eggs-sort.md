@@ -6,4 +6,4 @@
 '@use-simple-ts/use-toggle-ts': patch
 ---
 
-minor bump for tests
+minor bump for test
