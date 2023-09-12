@@ -1,8 +1,6 @@
 # @use-simple-ts/use-cloudinary-upload-ts
 
-A Quick description of the component
-
-> This is an internal utility, not intended for public usage.
+A Quick description of the custom hook
 
 ## Installation
 
