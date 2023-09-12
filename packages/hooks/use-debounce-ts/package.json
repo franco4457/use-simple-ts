@@ -1,6 +1,6 @@
 {
   "name": "@use-simple-ts/use-debounce-ts",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Custom hook for debuonce fuctions",
   "keywords": [
     "use-debounce-ts"

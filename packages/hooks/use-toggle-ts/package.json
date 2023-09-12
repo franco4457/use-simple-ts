@@ -1,6 +1,6 @@
 {
   "name": "@use-simple-ts/use-toggle-ts",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "a hook for toggle state",
   "keywords": [
     "use-toggle-ts"
