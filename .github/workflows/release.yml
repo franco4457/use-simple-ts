@@ -2,9 +2,9 @@ name: Release
 
 on:
   push:
-    paths:
-      - '.changeset/**'
-      - 'packages/**'
+    # paths:
+    #   - '.changeset/**'
+    #   - 'packages/**'
     branches:
       - main
 
@@ -28,6 +28,10 @@ jobs:
 
       - name: Tests
         run: pnpm test
+        env:
+          CI: true
+          VITE_CLOUDINARY_UPLOAD_PRESET: ${{ secrets.VITE_CLOUDINARY_UPLOAD_PRESET }}
+          VITE_CLOUDINARY_CLOUD_NAME: ${{ secrets.VITE_CLOUDINARY_CLOUD_NAME }}
 
       - name: Create Release Pull Request or Publish to NPM
         id: changesets
