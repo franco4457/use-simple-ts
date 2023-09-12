@@ -10,7 +10,8 @@
     "create:hook": "plop hook",
     "version": "changeset version",
     "release": "changeset publish",
-    "release:dev": "standard-version",
+    "version:dev": "changeset version --snapshot dev-v2",
+    "release:dev": "changeset publish --snapshot --no-git-tag --tag dev-v2",
     "prepare": "husky install"
   },
   "dependencies": {
