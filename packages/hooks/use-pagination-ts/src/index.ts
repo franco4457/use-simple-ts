@@ -4,7 +4,6 @@ export interface UsePaginationTsProps<T> {
   items: T[]
   limit?: number
 }
-
 export function usePaginationTS<T>({
   items: itemsToPaginate,
   limit = 10
