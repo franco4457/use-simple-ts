@@ -10,6 +10,10 @@ const camelCase = (str) => {
   return str.replace(/[-_](\w)/g, (_, c) => c.toUpperCase())
 }
 
+const camelCaseTS = (str) => {
+  return camelCase(str).replace(/ts$/i, 'TS')
+}
+
 const workspaces = ['hooks']
 const generators = ['hook']
 
@@ -26,6 +30,9 @@ module.exports = function main(plop) {
   })
   plop.setHelper('camelCase', (text) => {
     return camelCase(text)
+  })
+  plop.setHelper('camelCaseTS', (text) => {
+    return camelCaseTS(text)
   })
 
   generators.forEach((gen) => {
