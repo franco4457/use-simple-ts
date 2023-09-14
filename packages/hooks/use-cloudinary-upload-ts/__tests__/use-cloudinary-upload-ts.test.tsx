@@ -16,7 +16,7 @@ describe('useCloudinaryUploadTS', () => {
     expect(result.current.image).toBeUndefined()
   })
 
-  it.concurrent('should be change state loading', async () => {
+  it('should be change state loading', async () => {
     const { result } = renderHook(() => useCloudinaryUploadTS({ uploadPresetName, cloudName }))
     const file = new File([testImage], 'test.png', { type: 'image/png' })
     const event = {
@@ -60,7 +60,7 @@ describe('useCloudinaryUploadTS', () => {
       { timeout: 3000 }
     )
   })
-  it.concurrent('should be change state error', async () => {
+  it('should be change state error', async () => {
     const { result } = renderHook(() => useCloudinaryUploadTS({ uploadPresetName: '', cloudName }))
     const file = new File([testImage], 'test.png', { type: 'image/png' })
     const event = {
