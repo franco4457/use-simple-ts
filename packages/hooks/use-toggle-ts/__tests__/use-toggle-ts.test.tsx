@@ -3,15 +3,15 @@ import { renderHook, act } from '@testing-library/react'
 import { useToggleTS } from '../src'
 
 describe('useToggleTS', () => {
-  it('should work correctly when initialState is undefined', () => {
+  it.concurrent('should work correctly when initialState is undefined', () => {
     const { result } = renderHook(() => useToggleTS())
     expect(result.current.toggle).toBe(false)
   })
-  it('should work correctly when initial state is true', () => {
+  it.concurrent('should work correctly when initial state is true', () => {
     const { result } = renderHook(() => useToggleTS(true))
     expect(result.current.toggle).toBe(true)
   })
-  it('should work correctly switch', async () => {
+  it.concurrent('should work correctly switch', async () => {
     const { result } = renderHook(() => useToggleTS())
     expect(result.current.toggle).toBe(false)
     act(() => {
@@ -24,7 +24,7 @@ describe('useToggleTS', () => {
     })
     expect(result.current.toggle).toBe(false)
   })
-  it('should work correctly switch with custom value', async () => {
+  it.concurrent('should work correctly switch with custom value', async () => {
     const initalState = { value: true, value2: false }
     const { result } = renderHook(() => useToggleTS(initalState))
     expect(result.current.toggle).toStrictEqual(initalState)

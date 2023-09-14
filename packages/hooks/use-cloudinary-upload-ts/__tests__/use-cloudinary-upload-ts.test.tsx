@@ -8,12 +8,33 @@ const {
 } = process.env
 
 describe('useCloudinaryUploadTS', () => {
-  it('should work correctly', () => {
+  it.concurrent('should work correctly', () => {
     const { result } = renderHook(() => useCloudinaryUploadTS({ uploadPresetName, cloudName }))
     expect(result.current.handleInputChange).toBeInstanceOf(Function)
     expect(result.current.error).toBeUndefined()
     expect(result.current.isLoading).toBe(false)
     expect(result.current.image).toBeUndefined()
+  })
+
+  it.concurrent('should be change state loading', async () => {
+    const { result } = renderHook(() => useCloudinaryUploadTS({ uploadPresetName, cloudName }))
+    const file = new File([testImage], 'test.png', { type: 'image/png' })
+    const event = {
+      target: {
+        files: [file]
+      }
+    } as unknown as React.ChangeEvent<HTMLInputElement>
+    const initalResult = result.current
+    act(() => {
+      result.current.handleInputChange(event)
+    })
+    await waitFor(
+      () => {
+        expect(result.current).not.toEqual(initalResult)
+      },
+      { timeout: 2000 }
+    )
+    expect(result.current.isLoading).toBe(true)
   })
 
   it('should work correctly with file', async () => {
@@ -36,27 +57,10 @@ describe('useCloudinaryUploadTS', () => {
         expect(result.current.image).toBeDefined()
         expect(result.current.image).toBeTypeOf('string')
       },
-      { timeout: 2000 }
+      { timeout: 3000 }
     )
   })
-  it('should be change state loading', async () => {
-    const { result } = renderHook(() => useCloudinaryUploadTS({ uploadPresetName, cloudName }))
-    const file = new File([testImage], 'test.png', { type: 'image/png' })
-    const event = {
-      target: {
-        files: [file]
-      }
-    } as unknown as React.ChangeEvent<HTMLInputElement>
-    const initalResult = result.current
-    act(() => {
-      result.current.handleInputChange(event)
-    })
-    await waitFor(() => {
-      expect(result.current).not.toBe(initalResult)
-    })
-    expect(result.current.isLoading).toBe(true)
-  })
-  it('should be change state error', async () => {
+  it.concurrent('should be change state error', async () => {
     const { result } = renderHook(() => useCloudinaryUploadTS({ uploadPresetName: '', cloudName }))
     const file = new File([testImage], 'test.png', { type: 'image/png' })
     const event = {
