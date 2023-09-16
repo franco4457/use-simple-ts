@@ -26,7 +26,7 @@ export function useHoverTS<T extends Element>({ onHoverEnd, onHoverStart }: UseH
       element.removeEventListener('mouseover', handleMouseOver)
       element.removeEventListener('mouseout', handleMouseOut)
     }
-  }, [])
+  }, [onHoverEnd, onHoverStart])
 
   return { ref, isHovering }
 }
