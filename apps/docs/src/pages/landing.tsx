@@ -2,7 +2,7 @@ import { links } from '@utils/links'
 import { Welcome } from '@components/welcome'
 import { Link } from 'wouter'
 
-export function Landing () {
+export function Landing() {
   return (
     <>
       <Welcome />
@@ -14,9 +14,7 @@ export function Landing () {
           <ul>
             {links.slice(1).map((link, i) => (
               <li key={i}>
-              <Link href={link.path}>
-                {link.name}
-              </Link>
+                <Link href={link.path}>{link.name}</Link>
               </li>
             ))}
           </ul>

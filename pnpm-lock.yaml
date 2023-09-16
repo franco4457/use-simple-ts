@@ -120,6 +120,9 @@ importers:
       '@use-simple-ts/use-debounce-ts':
         specifier: workspace:*
         version: link:../../packages/hooks/use-debounce-ts
+      '@use-simple-ts/use-hover-ts':
+        specifier: workspace:*
+        version: link:../../packages/hooks/use-hover-ts
       '@use-simple-ts/use-pagination-ts':
         specifier: workspace:*
         version: link:../../packages/hooks/use-pagination-ts

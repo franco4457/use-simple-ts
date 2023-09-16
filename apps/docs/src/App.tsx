@@ -1,12 +1,15 @@
 import './App.css'
-import { DebouncePage } from '@pages/debunce'
-import { Landing } from '@pages/index'
-import { PaginationPage } from '@pages/pagination'
 import { Route } from 'wouter'
-import { TogglePage } from '@pages/toggle'
-import { CloudinaryUploadPage } from '@pages/cloudinary-upload'
+import {
+  PaginationPage,
+  TogglePage,
+  CloudinaryUploadPage,
+  DebouncePage,
+  Landing,
+  HoverPage
+} from '@pages'
 
-function App () {
+function App() {
   return (
     <>
       <Route path="/" component={Landing} />
@@ -14,6 +17,7 @@ function App () {
       <Route path="/debounce" component={DebouncePage} />
       <Route path="/pagination" component={PaginationPage} />
       <Route path="/coudinary-upload" component={CloudinaryUploadPage} />
+      <Route path="/hover" component={HoverPage} />
     </>
   )
 }

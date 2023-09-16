@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.2",
   "scripts": {
+    "dev": "turbo dev --filter=use-simple-ts-web",
     "build": "turbo build --filter=!use-simple-ts-web",
     "lint": "eslint src --ext ts,tsx,js,jsx,mjs,cjs",
     "test": "vitest --config ./vitest.config.js",

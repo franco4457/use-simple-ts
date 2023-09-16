@@ -1,15 +1,14 @@
 type LinksType = {
-        name: string
-        path: string
-        children: LinksType[]
-    }
+  name: string
+  path: string
+  children: LinksType[]
+}
 
 export const links: LinksType[] = [
   {
     name: 'Home',
     path: '/',
     children: []
-
   },
   {
     name: 'useToggle',
@@ -29,6 +28,11 @@ export const links: LinksType[] = [
   {
     name: 'useCloudinaryUpload',
     path: '/coudinary-upload',
+    children: []
+  },
+  {
+    name: 'useHover',
+    path: '/hover',
     children: []
   }
 ]

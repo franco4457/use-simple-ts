@@ -15,6 +15,7 @@
     "@use-simple-ts/use-debounce-ts": "workspace:*",
     "@use-simple-ts/use-pagination-ts": "workspace:*",
     "@use-simple-ts/use-toggle-ts": "workspace:*",
+    "@use-simple-ts/use-hover-ts": "workspace:*",
     "dotenv": "^16.3.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",

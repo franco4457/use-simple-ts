@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
 
-export function useHoverTS() {
+export function useHoverTS<T extends Element>() {
   const [isHovering, setIsHovering] = useState(false)
-  const ref = useRef<HTMLElement>(null)
+  const ref = useRef<T | null>(null)
   useEffect(() => {
     const element = ref.current
     if (!element) return
-
+    if (element === null) return
     const handleMouseOver = () => setIsHovering(true)
     const handleMouseOut = () => setIsHovering(false)
     element.addEventListener('mouseover', handleMouseOver)
@@ -19,5 +19,3 @@ export function useHoverTS() {
 
   return { ref, isHovering }
 }
-
-export type UseHoverTSReturn = ReturnType<typeof useHoverTS>
