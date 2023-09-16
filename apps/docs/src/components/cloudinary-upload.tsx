@@ -8,12 +8,7 @@ export function CloudinaryUpload() {
   })
   return (
     <section>
-      <input
-        type="file"
-        name="upload"
-        placeholder="Upload an image"
-        onChange={handleInputChange}
-      />
+      <input type="file" name="upload" placeholder="Upload an image" onChange={handleInputChange} />
       {image && <img data-testid="image" src={image} alt="uploaded image" />}
     </section>
   )
