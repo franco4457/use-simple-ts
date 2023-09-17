@@ -5,9 +5,14 @@ A Quick description of the custom hook
 ## Installation
 
 ```sh
+pnpm i @use-simple-ts/use-toggle-ts
+
+```
+
+### or yarn
+
+```sh
 yarn add @use-simple-ts/use-toggle-ts
-# or
-npm i @use-simple-ts/use-toggle-ts
 ```
 
 ## Contribution

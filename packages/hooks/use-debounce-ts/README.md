@@ -5,9 +5,14 @@ A Quick description of the custom hook
 ## Installation
 
 ```sh
+pnpm i @use-simple-ts/use-debounce-ts
+
+```
+
+### or yarn
+
+```sh
 yarn add @use-simple-ts/use-debounce-ts
-# or
-npm i @use-simple-ts/use-debounce-ts
 ```
 
 ## Contribution
