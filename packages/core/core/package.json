@@ -39,7 +39,9 @@
     "@use-simple-ts/use-cloudinary-upload-ts": "workspace:*",
     "@use-simple-ts/use-debounce-ts": "workspace:*",
     "@use-simple-ts/use-pagination-ts": "workspace:*",
-    "@use-simple-ts/use-toggle-ts": "workspace:*"
+    "@use-simple-ts/use-toggle-ts": "workspace:*",
+    "@use-simple-ts/use-hover-ts": "workspace:*",
+    "@use-simple-ts/use-favicon-ts": "workspace:*"
   },
   "peerDependencies": {
     "react": ">=18"
