@@ -1,5 +1,17 @@
 # @use-simple-ts/core
 
+## 1.1.0
+
+### Minor Changes
+
+- [`48c3c2e`](https://github.com/franco4457/use-simple-ts/commit/48c3c2e3b8b69ec4cb8d9893a1b017aeae4367eb) Thanks [@franco4457](https://github.com/franco4457)! - add useFaviconTS and useHoverTS
+
+### Patch Changes
+
+- Updated dependencies [[`37d7535`](https://github.com/franco4457/use-simple-ts/commit/37d75351fe32d6ff485943e299d9d3d178d023ac), [`5a79356`](https://github.com/franco4457/use-simple-ts/commit/5a7935618aeadc84be73d365e22209b2022743af)]:
+  - @use-simple-ts/use-favicon-ts@1.0.1
+  - @use-simple-ts/use-hover-ts@1.2.0
+
 ## 1.0.3
 
 ### Patch Changes

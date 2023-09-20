@@ -1,5 +1,11 @@
 # @use-simple-ts/use-hover-ts
 
+## 1.2.0
+
+### Minor Changes
+
+- [`5a79356`](https://github.com/franco4457/use-simple-ts/commit/5a7935618aeadc84be73d365e22209b2022743af) Thanks [@franco4457](https://github.com/franco4457)! - add onHoverStart and onHoverEnd
+
 ## 1.1.0
 
 ### Minor Changes
