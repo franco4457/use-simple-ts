@@ -10,13 +10,11 @@ export function useFaviconTS({ url }: UseFaviconTsProps = {}) {
   useEffect(() => {
     if (!value || value === '') return
     const document = typeof window === 'undefined' ? null : window.document
-    console.log({ document })
     if (!document) return
-
     const link = (document.querySelector("link[rel*='icon']") ||
       document.createElement('link')) as HTMLLinkElement
     link.type = 'image/x-icon'
-    link.rel = 'shortcut icon'
+    link.rel = 'icon'
     link.href = value
     document.getElementsByTagName('head')[0].appendChild(link)
   }, [value])

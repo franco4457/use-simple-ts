@@ -185,6 +185,15 @@ importers:
         specifier: ^18.0.0
         version: 18.2.0
 
+  packages/hooks/use-favicon-ts:
+    devDependencies:
+      clean-package:
+        specifier: 2.2.0
+        version: 2.2.0
+      react:
+        specifier: ^18.0.0
+        version: 18.2.0
+
   packages/hooks/use-hover-ts:
     devDependencies:
       clean-package:
