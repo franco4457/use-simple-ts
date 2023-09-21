@@ -159,6 +159,9 @@ importers:
       '@use-simple-ts/use-pagination-ts':
         specifier: workspace:*
         version: link:../../hooks/use-pagination-ts
+      '@use-simple-ts/use-title-ts':
+        specifier: workspace:*
+        version: link:../../hooks/use-title-ts
       '@use-simple-ts/use-toggle-ts':
         specifier: workspace:*
         version: link:../../hooks/use-toggle-ts
@@ -211,6 +214,15 @@ importers:
       react-dom:
         specifier: ^18
         version: 18.2.0(react@18.2.0)
+    devDependencies:
+      clean-package:
+        specifier: 2.2.0
+        version: 2.2.0
+      react:
+        specifier: ^18.0.0
+        version: 18.2.0
+
+  packages/hooks/use-title-ts:
     devDependencies:
       clean-package:
         specifier: 2.2.0
