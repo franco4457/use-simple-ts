@@ -1,6 +1,6 @@
 {
   "name": "@use-simple-ts/use-title-ts",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Hook for manipulate the document title",
   "keywords": [
     "use-title-ts"
