@@ -11,10 +11,7 @@ export function useTitleTS({ title }: UseTitleTsProps = {}) {
     if (!value || value === '') return
     const document = typeof window === 'undefined' ? null : window.document
     if (!document) return
-    const title = (document.querySelector('title') ||
-      document.createElement('title')) as HTMLTitleElement
-    title.innerText = value
-    document.getElementsByTagName('head')[0].appendChild(title)
+    document.title = value
   }, [value])
   return { updateTitle }
 }
