@@ -1,6 +1,6 @@
 {
   "name": "@use-simple-ts/core",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "A lightweight library for custom react hooks 🚀",
   "author": "Franco Gutierrez <francoegi01@gmail.com>",
   "license": "MIT",
